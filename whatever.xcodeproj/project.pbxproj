@@ -58,6 +58,7 @@
 		84B3ED5B1CFB36B20007D5F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84B3ED5E1CFB36B20007D5F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84B3ED601CFB36B20007D5F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84B3ED661CFC724F0007D5F3 /* CommonHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonHeader.h; sourceTree = "<group>"; };
 		84DD2DEAD20EB5C31DCA7603 /* Pods-whatever.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-whatever.release.xcconfig"; path = "Pods/Target Support Files/Pods-whatever/Pods-whatever.release.xcconfig"; sourceTree = "<group>"; };
 		C5020C576F5001B1A278FAA2 /* Pods-whatever.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-whatever.debug.xcconfig"; path = "Pods/Target Support Files/Pods-whatever/Pods-whatever.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -155,6 +156,7 @@
 				02E98DFF1CFC38CB0061671C /* UIColor+Category.m */,
 				02E98E011CFC46670061671C /* UIImage+Color.h */,
 				02E98E021CFC46670061671C /* UIImage+Color.m */,
+				84B3ED661CFC724F0007D5F3 /* CommonHeader.h */,
 			);
 			path = Common;
 			sourceTree = "<group>";

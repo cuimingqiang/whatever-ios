@@ -11,14 +11,14 @@
 #import "UIImage+Color.h"
 #import "Masonry/Masonry.h"
 #import "ReactiveCocoa.h"
-#import "RegisterVM.h"
+#import "ValidateCodeVM.h"
 @interface RegisterController()
 @property(nonatomic)UITextField *tfAccount;
 @property(nonatomic)UITextField *tfCode;
 @property(nonatomic)UIButton    *btnCode;
 @property(nonatomic)UIButton    *btnLogin;
 
-@property(nonatomic)RegisterVM *vm;
+@property(nonatomic)ValidateCodeVM *vm;
 @end
 
 @implementation RegisterController
@@ -73,7 +73,23 @@
         make.leading.equalTo(@(10));
         make.trailing.equalTo(@(-10));
     }];
-    _vm = [[RegisterVM alloc]init];
-    RAC(_vm,account) = _tfAccount.rac_textSignal;
+    
+}
+
+-(void)bindVM{
+    _vm = [[ValidateCodeVM alloc]init];
+    RAC(self.vm.model,phone) = _tfAccount.rac_textSignal;
+    RAC(self.vm.model,code) = _tfCode.rac_textSignal;
+    
+    RAC(_btnCode,enabled) = self.vm.getCodeEnableSignal;
+    RAC(_btnLogin,enabled) = self.vm.validateEnableSignal;
+    
+    [[_btnCode rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(id x) {
+        [self.vm.getCodeCommand execute:nil];
+    }];
+    
+    [[_btnLogin rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        [self.vm.validateCommand execute:nil];
+    }];
 }
 @end

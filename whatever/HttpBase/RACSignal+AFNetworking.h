@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ReactiveCocoa.h"
-#import "AFNetworking.h"
+#import "ReactiveCocoa/ReactiveCocoa.h"
+#import "AFNetworking/AFNetworking.h"
 @interface RACSignal (AFNetworking)
 +(instancetype)afn_postWithURL:(NSString*)url parameters:(id)parameters dataClass:(Class)clazz;
 +(instancetype)afn_getWithURL:(NSString*)url parameters:(id)parameters dataClass:(Class)clazz;

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ReactiveCocoa.h"
+#import "ReactiveCocoa/ReactiveCocoa.h"
 @interface RACSignal(Bus)
 
 //分配一个事件

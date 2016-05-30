@@ -11,5 +11,6 @@
 @interface RACSignal(UserAPI)
 
 +(instancetype)api_register:(id)param dataClass:(Class)clazz;
-
++(instancetype)api_getCode:(NSString*)phone dataClass:(Class)clazz;
++(instancetype)api_validateCode:(id)param dataClass:(Class)clazz;
 @end
