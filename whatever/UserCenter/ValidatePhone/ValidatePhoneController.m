@@ -1,18 +1,16 @@
 //
-//  RegisterController.m
+//  ValidatePhoneController.m
 //  whatever
 //
 //  Created by cuimingqiang on 16/5/30.
 //  Copyright © 2016年 cmq. All rights reserved.
 //
 
-#import "RegisterController.h"
-#import "UIColor+Category.h"
-#import "UIImage+Color.h"
-#import "Masonry/Masonry.h"
+#import "ValidatePhoneController.h"
+#import "CommonHeader.h"
 #import "ReactiveCocoa.h"
 #import "ValidateCodeVM.h"
-@interface RegisterController()
+@interface ValidatePhoneController()
 @property(nonatomic)UITextField *tfAccount;
 @property(nonatomic)UITextField *tfCode;
 @property(nonatomic)UIButton    *btnCode;
@@ -21,17 +19,17 @@
 @property(nonatomic)ValidateCodeVM *vm;
 @end
 
-@implementation RegisterController
+@implementation ValidatePhoneController
 -(void)viewDidLoad{
     [super viewDidLoad];
-    self.title = @"注册";
-    
+    self.title = @"验证手机号";
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"取消" style:UIBarButtonItemStyleDone target:self action:@selector(cancel)];
     _tfAccount = [[UITextField alloc]init];
     UIView *left = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 10, 10)];
     _tfAccount.backgroundColor = [UIColor whiteColor];
     _tfAccount.leftView = left;
     _tfAccount.leftViewMode = UITextFieldViewModeAlways;
-    _tfAccount.placeholder = @"账号";
+    _tfAccount.placeholder = @"手机号";
     [self.view addSubview:_tfAccount];
     [_tfAccount mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(@(74));
@@ -110,5 +108,9 @@
     [[_btnLogin rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         [self.vm.validateCommand execute:nil];
     }];
+}
+
+-(void)cancel{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end
