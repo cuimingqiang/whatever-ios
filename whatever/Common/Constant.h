@@ -10,5 +10,4 @@
 #define Constant_h
 #define MainScreenWidth [[UIScreen mainScreen]bounds].size.width
 #define MainScreenHeight [[UIScreen mainScreen]bounds].size.height
-
 #endif /* Constant_h */

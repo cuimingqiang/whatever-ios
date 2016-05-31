@@ -10,5 +10,8 @@
 #define CommonHeader_h
 
 #import "ReactiveCocoa/ReactiveCocoa.h"
+#import "UIColor+Category.h"
+#import "UIImage+Color.h"
+#import "Masonry/Masonry.h"
 
 #endif /* CommonHeader_h */

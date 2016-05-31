@@ -7,7 +7,10 @@
 //
 
 #import "BaseUIViewController.h"
-#import "Constant.h"
+#import "CommonHeader.h"
 @implementation BaseUIViewController
-
+-(void)viewDidLoad{
+    [super viewDidLoad];
+     self.view.backgroundColor = [UIColor colorWithString:@"EEEEEE"];
+}
 @end

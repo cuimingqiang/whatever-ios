@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "RegisterController.h"
+#import "LoginController.h"
 #import "UIColor+Category.h"
 @interface AppDelegate ()
 
@@ -21,7 +21,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor colorWithString:@"EEEEEE"];
     [self.window makeKeyAndVisible];
-    UINavigationController *navigationController = [[UINavigationController alloc]initWithRootViewController:[[RegisterController alloc]init]];
+    UINavigationController *navigationController = [[UINavigationController alloc]initWithRootViewController:[[LoginController alloc]init]];
     self.window.rootViewController = navigationController;
     return YES;
 }

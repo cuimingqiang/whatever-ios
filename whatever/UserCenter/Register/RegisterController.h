@@ -2,12 +2,12 @@
 //  RegisterController.h
 //  whatever
 //
-//  Created by cuimingqiang on 16/5/30.
+//  Created by cuimingqiang on 16/5/31.
 //  Copyright © 2016年 cmq. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-@interface RegisterController : UIViewController
+#import <Foundation/Foundation.h>
 
+@interface RegisterController : NSObject
 
 @end

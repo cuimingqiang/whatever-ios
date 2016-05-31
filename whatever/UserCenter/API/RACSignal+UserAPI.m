@@ -13,10 +13,10 @@
     return [RACSignal afn_postWithURL:@"/user/register" parameters:param dataClass:clazz];
 }
 +(instancetype)api_getCode:(NSString *)phone dataClass:(Class)clazz{
-    NSString *url = [NSString stringWithFormat:@"/user/getCode/%@",phone];
+    NSString *url = [NSString stringWithFormat:@"/user/getCode/%@/register",phone];
     return [RACSignal afn_getWithURL:url parameters:nil dataClass:clazz];
 }
 +(instancetype)api_validateCode:(id)param dataClass:(Class)clazz{
-    return [RACSignal afn_postWithURL:@"" parameters:param dataClass:[NSDictionary class]];
+    return [RACSignal afn_postWithURL:@"/user/validateCode" parameters:param dataClass:[NSDictionary class]];
 }
 @end

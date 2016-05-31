@@ -44,7 +44,6 @@ typedef NSURLSessionDataTask* (^RequestMethod)(NSDictionary* param,Success succe
 
 +(instancetype)afn_postWithURL:(NSString *)url parameters:(id)parameters dataClass:(Class)clazz{
     NSLog(@"-->POST%@",url);
-    if(parameters)NSLog(@"param:%@",parameters);
     return [RACSignal requestWithParam:parameters dataClass:clazz method:^NSURLSessionDataTask *(NSDictionary *param, Success success,Failure failure) {
         return [[RACSignal managerShare]POST:url parameters:param progress:nil success:success failure:failure];
     }];
@@ -52,7 +51,6 @@ typedef NSURLSessionDataTask* (^RequestMethod)(NSDictionary* param,Success succe
 
 +(instancetype)afn_getWithURL:(NSString *)url parameters:(id)parameters dataClass:(Class)clazz{
     NSLog(@"-->GET%@",url);
-    if(parameters)NSLog(@"%@",parameters);
     return [RACSignal requestWithParam:parameters dataClass:clazz method:^NSURLSessionDataTask *(NSDictionary *param, Success success,Failure failure) {
         return [[RACSignal managerShare]GET:url parameters:param progress:nil success:success failure:failure];
     }];
@@ -62,14 +60,17 @@ typedef NSURLSessionDataTask* (^RequestMethod)(NSDictionary* param,Success succe
     
     RACSignal *networkRequest = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         NSDictionary *param = nil;
-        if([parameters isKindOfClass:[NSDictionary class]]){
+        if(parameters == nil){
+            
+        }else if([parameters isKindOfClass:[NSDictionary class]]){
             param = parameters;
         }else{
             param = [parameters mj_keyValues];
         }
+        if(param)NSLog(@"param:%@",param);
         
         id success = ^(NSURLSessionTask *task, id responseObject){
-            NSLog(@"<-- :%@\n%@\n%@",task.response.URL,responseObject,[[NSString alloc]initWithData:task.originalRequest.HTTPBody encoding:NSUTF8StringEncoding]);
+            NSLog(@"<--%@\n%@",task.response.URL,responseObject);
             BaseResult *result = [BaseResult mj_objectWithKeyValues:responseObject];
             if(result.code == 200){
                 if(class_conformsToProtocol(clazz, @protocol(JSON_Model))){
@@ -104,12 +105,13 @@ typedef NSURLSessionDataTask* (^RequestMethod)(NSDictionary* param,Success succe
             [subscriber sendError:error];
         };
         
-        NSURLSessionDataTask *task = mothod(parameters,success,failure);
+        NSURLSessionDataTask *task = mothod(param,success,failure);
         [task resume];
+        
         return [RACDisposable disposableWithBlock:^{
             [task cancel];
         }];
     }];
-    return [networkRequest deliverOn:[RACScheduler scheduler]];
+    return networkRequest;
 }
 @end

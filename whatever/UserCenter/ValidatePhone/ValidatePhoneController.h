@@ -1,5 +1,5 @@
 //
-//  LoginController.h
+//  ValidatePhoneController.h
 //  whatever
 //
 //  Created by cuimingqiang on 16/5/30.
@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseUIViewController.h"
-@interface LoginController : BaseUIViewController
+@interface ValidatePhoneController : BaseUIViewController
+
 
 @end
