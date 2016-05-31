@@ -93,12 +93,12 @@ typedef NSURLSessionDataTask* (^RequestMethod)(NSDictionary* param,Success succe
                     data = result.data;
                 }
                 [subscriber sendNext:data];
+                [subscriber sendCompleted];
             }else{
                 NSError *err = [[NSError alloc]initWithDomain:result.msg code:result.code userInfo:@{NSLocalizedDescriptionKey:result.msg}];
-                
                 [subscriber sendError:err];
             }
-            [subscriber sendCompleted];
+            
         };
         
         id failure = ^(NSURLSessionTask *operation, NSError *error){

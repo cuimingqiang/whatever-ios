@@ -9,5 +9,6 @@ pod 'AFNetworking','3.0.4'
 pod 'MJExtension','3.0.10'
 pod 'MJRefresh','1.4.6'
 pod 'Masonry', '~> 1.0.1'
+pod 'MBProgressHUD', '~> 0.9.2'
 end
 

@@ -8,7 +8,6 @@
 
 #import "ValidatePhoneController.h"
 #import "CommonHeader.h"
-#import "ReactiveCocoa.h"
 #import "ValidateCodeVM.h"
 @interface ValidatePhoneController()
 @property(nonatomic)UITextField *tfAccount;
@@ -28,6 +27,7 @@
     UIView *left = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 10, 10)];
     _tfAccount.backgroundColor = [UIColor whiteColor];
     _tfAccount.leftView = left;
+    _tfAccount.keyboardType = UIKeyboardTypePhonePad;
     _tfAccount.leftViewMode = UITextFieldViewModeAlways;
     _tfAccount.placeholder = @"手机号";
     [self.view addSubview:_tfAccount];
@@ -83,30 +83,28 @@
     RAC(_btnCode,enabled) = self.vm.getCodeEnableSignal;
     RAC(_btnLogin,enabled) = self.vm.validateEnableSignal;
     
-    [self.vm.getCodeCommand.executionSignals.switchToLatest subscribeNext:^(id x) {
-       
-    } error:^(NSError *error) {
-        
-    }];
-    
-    [[self.vm.getCodeCommand.executing skip:1]subscribeNext:^(id x) {
-       
+    [[_tfAccount rac_textSignal]subscribeNext:^(id x) {
+        if([x length] > 11){
+            _tfAccount.text = [x substringToIndex:11];
+        }
     }];
     
     [[_btnCode rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(id x) {
-        [self.vm.getCodeCommand execute:nil];
-    }];
-    
-    [self.vm.validateCommand.executionSignals.switchToLatest subscribeNext:^(id x) {
-       
-    }];
-    
-    [[self.vm.validateCommand.executing skip:1]subscribeNext:^(id x) {
-        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [[self.vm.getCodeCommand execute:nil]subscribeNext:^(id x) {
+            [MBProgressHUD hideWithSuccessAndMsg:@"验证码已发送" inView:self.view];
+        } error:^(NSError *error) {
+            [MBProgressHUD hideWithFailureAndMsg:error.localizedDescription inView:self.view];
+        }];
     }];
     
     [[_btnLogin rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        [self.vm.validateCommand execute:nil];
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [[self.vm.validateCommand execute:nil] subscribeNext:^(id x) {
+            
+        } error:^(NSError *error) {
+            
+        }];
     }];
 }
 

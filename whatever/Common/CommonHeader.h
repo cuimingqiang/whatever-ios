@@ -13,5 +13,6 @@
 #import "UIColor+Category.h"
 #import "UIImage+Color.h"
 #import "Masonry/Masonry.h"
-
+#import "MBProgressHUD/MBProgressHUD.h"
+#import "MBProgressHUD+Toast.h"
 #endif /* CommonHeader_h */
