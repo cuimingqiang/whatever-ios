@@ -74,6 +74,7 @@
         make.trailing.equalTo(@(-10));
     }];
     
+    [self bindVM];
 }
 
 -(void)bindVM{
@@ -83,6 +84,14 @@
     
     RAC(_btnCode,enabled) = self.vm.getCodeEnableSignal;
     RAC(_btnLogin,enabled) = self.vm.validateEnableSignal;
+    
+    [self.vm.getCodeCommand.executionSignals.switchToLatest subscribeNext:^(id x) {
+        NSLog(@"----------executionSignals:%@",x);
+    }];
+    
+    [[self.vm.getCodeCommand.executing skip:1]subscribeNext:^(id x) {
+        NSLog(@"----------executing:%@",x);
+    }];
     
     [[_btnCode rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(id x) {
         [self.vm.getCodeCommand execute:nil];

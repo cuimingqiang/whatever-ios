@@ -13,6 +13,7 @@
 {
     self = [super init];
     if (self) {
+        _model = [[ValidateCodeModel alloc]init];
         [self setup];
     }
     return self;

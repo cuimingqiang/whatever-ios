@@ -12,7 +12,4 @@
 @property(nonatomic,assign)NSInteger code;
 @property(nonatomic,strong)id data;
 @property(nonatomic,strong)NSString *msg;
-@property(nonatomic,strong)NSString *reason;
-@property(nonatomic,assign)NSInteger status;
-@property(nonatomic,strong)NSString *fromuri;
 @end
