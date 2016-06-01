@@ -20,6 +20,10 @@
 		02B285D61CFC22D7002035AF /* BaseUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02B285D51CFC22D7002035AF /* BaseUIViewController.m */; };
 		02E98E001CFC38CB0061671C /* UIColor+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E98DFF1CFC38CB0061671C /* UIColor+Category.m */; };
 		02E98E031CFC46670061671C /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E98E021CFC46670061671C /* UIImage+Color.m */; };
+		02FC7BA61CFEAD3100659481 /* RegisterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 02FC7BA51CFEAD3100659481 /* RegisterModel.m */; };
+		02FC7BA91CFEADD300659481 /* RegisterVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 02FC7BA81CFEADD300659481 /* RegisterVM.m */; };
+		02FC7BAC1CFED9CE00659481 /* LoginVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 02FC7BAB1CFED9CE00659481 /* LoginVM.m */; };
+		02FC7BAF1CFEDA8B00659481 /* LoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 02FC7BAE1CFEDA8B00659481 /* LoginModel.m */; };
 		0E975580702D24BB780E071B /* Pods_whatever.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C16175CD66320453C39339 /* Pods_whatever.framework */; };
 		84B3ED511CFB36B20007D5F3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B3ED501CFB36B20007D5F3 /* main.m */; };
 		84B3ED5C1CFB36B20007D5F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84B3ED5B1CFB36B20007D5F3 /* Assets.xcassets */; };
@@ -56,6 +60,14 @@
 		02E98DFF1CFC38CB0061671C /* UIColor+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Category.m"; sourceTree = "<group>"; };
 		02E98E011CFC46670061671C /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
 		02E98E021CFC46670061671C /* UIImage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Color.m"; sourceTree = "<group>"; };
+		02FC7BA41CFEAD3100659481 /* RegisterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterModel.h; sourceTree = "<group>"; };
+		02FC7BA51CFEAD3100659481 /* RegisterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterModel.m; sourceTree = "<group>"; };
+		02FC7BA71CFEADD300659481 /* RegisterVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterVM.h; sourceTree = "<group>"; };
+		02FC7BA81CFEADD300659481 /* RegisterVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterVM.m; sourceTree = "<group>"; };
+		02FC7BAA1CFED9CE00659481 /* LoginVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginVM.h; sourceTree = "<group>"; };
+		02FC7BAB1CFED9CE00659481 /* LoginVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginVM.m; sourceTree = "<group>"; };
+		02FC7BAD1CFEDA8B00659481 /* LoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginModel.h; sourceTree = "<group>"; };
+		02FC7BAE1CFEDA8B00659481 /* LoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginModel.m; sourceTree = "<group>"; };
 		50C16175CD66320453C39339 /* Pods_whatever.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_whatever.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B3ED4C1CFB36B20007D5F3 /* whatever.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = whatever.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B3ED501CFB36B20007D5F3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -149,6 +161,10 @@
 			children = (
 				02B285CC1CFC1D27002035AF /* LoginController.h */,
 				02B285CD1CFC1D27002035AF /* LoginController.m */,
+				02FC7BAA1CFED9CE00659481 /* LoginVM.h */,
+				02FC7BAB1CFED9CE00659481 /* LoginVM.m */,
+				02FC7BAD1CFEDA8B00659481 /* LoginModel.h */,
+				02FC7BAE1CFEDA8B00659481 /* LoginModel.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -158,6 +174,10 @@
 			children = (
 				023A6C391CFDACDA0084003B /* RegisterController.h */,
 				023A6C3A1CFDACDA0084003B /* RegisterController.m */,
+				02FC7BA41CFEAD3100659481 /* RegisterModel.h */,
+				02FC7BA51CFEAD3100659481 /* RegisterModel.m */,
+				02FC7BA71CFEADD300659481 /* RegisterVM.h */,
+				02FC7BA81CFEADD300659481 /* RegisterVM.m */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -358,10 +378,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02FC7BA91CFEADD300659481 /* RegisterVM.m in Sources */,
+				02FC7BA61CFEAD3100659481 /* RegisterModel.m in Sources */,
+				02FC7BAC1CFED9CE00659481 /* LoginVM.m in Sources */,
 				02B285CF1CFC1D27002035AF /* LoginController.m in Sources */,
 				02B285C61CFC0FC2002035AF /* RACSignal+Bus.m in Sources */,
 				84B3ED511CFB36B20007D5F3 /* main.m in Sources */,
 				02B285BF1CFC0F4C002035AF /* BaseResult.m in Sources */,
+				02FC7BAF1CFEDA8B00659481 /* LoginModel.m in Sources */,
 				023A6C3B1CFDACDA0084003B /* RegisterController.m in Sources */,
 				02B285C11CFC0F4C002035AF /* RACSignal+AFNetworking.m in Sources */,
 				84B3ED691CFDCE640007D5F3 /* MBProgressHUD+Toast.m in Sources */,

@@ -9,8 +9,15 @@
 #import "BaseUIViewController.h"
 #import "CommonHeader.h"
 @implementation BaseUIViewController
+
+
+
 -(void)viewDidLoad{
-    [super viewDidLoad];
+     [super viewDidLoad];
      self.view.backgroundColor = [UIColor colorWithString:@"EEEEEE"];
+}
+
+
+-(void)bindVM{
 }
 @end

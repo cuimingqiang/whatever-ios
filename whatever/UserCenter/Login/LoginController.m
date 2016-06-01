@@ -77,13 +77,21 @@
         make.top.equalTo(_btnLogin.mas_bottom).offset(10);
         make.trailing.equalTo(@(-10));
     }];
-    
     [self bindVM];
 }
 -(void)bindVM{
+
     [[_btnRegister rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(id x) {
         UINavigationController *vc =  [[UINavigationController alloc]initWithRootViewController:[[ValidatePhoneController alloc]init]];
         [self presentViewController:vc animated:YES completion:nil];
+    }];
+    
+    [[_btnForgot rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(id x) {
+        
+    }];
+    
+    [[_btnLogin rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(id x) {
+        
     }];
 }
 @end

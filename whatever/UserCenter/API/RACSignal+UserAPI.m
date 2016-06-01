@@ -17,6 +17,6 @@
     return [RACSignal afn_getWithURL:url parameters:nil dataClass:clazz];
 }
 +(instancetype)api_validateCode:(id)param dataClass:(Class)clazz{
-    return [RACSignal afn_postWithURL:@"/user/validateCode" parameters:param dataClass:[NSDictionary class]];
+    return [RACSignal afn_postWithURL:@"/user/validateCode" parameters:param dataClass:clazz];
 }
 @end

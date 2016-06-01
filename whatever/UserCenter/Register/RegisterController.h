@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@interface RegisterController : NSObject
-
+#import "BaseUIViewController.h"
+@interface RegisterController : BaseUIViewController
+@property(nonatomic)NSString *registerToken;
+@property(nonatomic)NSString *phone;
 @end

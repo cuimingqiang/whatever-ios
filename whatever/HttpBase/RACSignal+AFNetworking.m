@@ -74,21 +74,28 @@ typedef NSURLSessionDataTask* (^RequestMethod)(NSDictionary* param,Success succe
             BaseResult *result = [BaseResult mj_objectWithKeyValues:responseObject];
             if(result.code == 200){
                 if(class_conformsToProtocol(clazz, @protocol(JSON_Model))){
-                    NSDictionary *dic = [clazz performSelector:@selector(undefineKeyMap)];
                     [clazz mj_setupReplacedKeyFromPropertyName:^NSDictionary *{
-                        return dic;
+                        return [clazz performSelector:@selector(undefineKeyMap)];
                     }];
                 }
                 id data = nil;
                 if([result.data isKindOfClass:[NSDictionary class]]){
-                    data = [clazz mj_objectWithKeyValues:result.data];
+                    if(clazz == [NSDictionary class]){
+                        data = result.data;
+                    }else{
+                        data = [clazz mj_objectWithKeyValues:result.data];
+                    }
                 }else if([result.data isKindOfClass:[NSArray class]]){
-                    NSMutableArray *arr = [NSMutableArray array];
-                    [result.data enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                        id item = [clazz mj_objectWithKeyValues:obj];
-                        [arr addObject:item];
-                    }];
-                    data = arr;
+                    if(clazz == [NSArray class]){
+                        data = result.data;
+                    }else{
+                        NSMutableArray *arr = [NSMutableArray array];
+                        [result.data enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                            id item = [clazz mj_objectWithKeyValues:obj];
+                            [arr addObject:item];
+                        }];
+                        data = arr;
+                    }
                 }else {
                     data = result.data;
                 }
@@ -102,6 +109,7 @@ typedef NSURLSessionDataTask* (^RequestMethod)(NSDictionary* param,Success succe
         };
         
         id failure = ^(NSURLSessionTask *operation, NSError *error){
+            NSLog(@"%@:%@",operation.response.URL,error.localizedDescription);
             [subscriber sendError:error];
         };
         

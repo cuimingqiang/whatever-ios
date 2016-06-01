@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface BaseUIViewController : UIViewController
-
+-(void)bindVM;
 @end

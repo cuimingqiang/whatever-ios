@@ -9,6 +9,7 @@
 #import "ValidatePhoneController.h"
 #import "CommonHeader.h"
 #import "ValidateCodeVM.h"
+#import "RegisterController.h"
 @interface ValidatePhoneController()
 @property(nonatomic)UITextField *tfAccount;
 @property(nonatomic)UITextField *tfCode;
@@ -71,7 +72,6 @@
         make.leading.equalTo(@(10));
         make.trailing.equalTo(@(-10));
     }];
-    
     [self bindVM];
 }
 
@@ -101,9 +101,14 @@
     [[_btnLogin rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [[self.vm.validateCommand execute:nil] subscribeNext:^(id x) {
+            [MBProgressHUD hideWithSuccessAndMsg:@"验证已通过" inView:self.view];
+            RegisterController *vc = [[RegisterController alloc]init];
+            vc.registerToken = x[@"registerToken"];
+            vc.phone = _tfAccount.text;
+            [self.navigationController pushViewController:vc animated:YES];
             
         } error:^(NSError *error) {
-            
+            [MBProgressHUD hideWithSuccessAndMsg:error.localizedDescription inView:self.view];
         }];
     }];
 }
